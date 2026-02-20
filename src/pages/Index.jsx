@@ -61,20 +61,17 @@ export default function Index() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background image with overlay */}
         <div className="absolute inset-0">
           <img src={heroFarm} alt="Agricultural fields" className="w-full h-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-transparent to-background/70" />
         </div>
 
-        {/* Glow orb */}
         <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-lime/8 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container mx-auto relative z-10 pt-24 pb-16">
           <div className="max-w-3xl">
-            {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-fade-up">
               <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
               <span className="text-xs font-medium text-primary tracking-wide uppercase">
@@ -89,7 +86,7 @@ export default function Index() {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10 max-w-2xl animate-fade-up" style={{ animationDelay: "0.2s" }}>
-              Harness ensemble machine learning and explainable AI to discover the perfect crops for your soil. 
+              Harness ensemble machine learning and explainable AI to discover the perfect crops for your soil.
               Science-backed recommendations trusted by thousands of farmers across India.
             </p>
 
@@ -107,7 +104,6 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Stats row */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 animate-fade-up" style={{ animationDelay: "0.4s" }}>
             {stats.map((stat) => (
               <div key={stat.label} className="glass rounded-2xl p-4 text-center border-glow">
@@ -118,7 +114,6 @@ export default function Index() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-muted-foreground animate-bounce">
           <span className="text-xs">Scroll</span>
           <ChevronDown className="w-4 h-4" />
@@ -166,10 +161,9 @@ export default function Index() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-            {/* Connector line */}
             <div className="hidden lg:block absolute top-10 left-[12%] right-[12%] h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
-            {steps.map((step, i) => (
+            {steps.map((step) => (
               <div key={step.num} className="relative flex flex-col items-center text-center group">
                 <div className="relative z-10 w-20 h-20 rounded-2xl bg-gradient-card border border-primary/20 flex items-center justify-center mb-5 group-hover:border-primary/60 group-hover:glow-primary transition-all duration-300">
                   <span className="font-display text-2xl font-bold text-gradient">{step.num}</span>

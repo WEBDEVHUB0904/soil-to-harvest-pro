@@ -1,4 +1,4 @@
-import { Brain, Leaf, Users, Award, Github, Linkedin, Mail, ExternalLink, Target, Lightbulb, Globe } from "lucide-react";
+import { Brain, Leaf, Github, Linkedin, Mail, ExternalLink, Target, Lightbulb, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -47,8 +47,6 @@ export default function About() {
       <Navbar />
       <div className="pt-28 pb-16">
         <div className="container mx-auto">
-
-          {/* Header */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
               <Leaf className="w-4 h-4 text-primary" />
@@ -58,12 +56,11 @@ export default function About() {
               Bridging AI & <span className="text-gradient">Agriculture</span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-              CropSense AI was born from a simple belief: every farmer deserves access to the same precision insights that large agri-corporations enjoy. 
+              CropSense AI was born from a simple belief: every farmer deserves access to the same precision insights that large agri-corporations enjoy.
               By combining ensemble machine learning with explainable AI, we make data-driven farming accessible, transparent, and trustworthy.
             </p>
           </div>
 
-          {/* Mission pillars */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20">
             {[
               { icon: Target, title: "Precision", desc: "99%+ accuracy through ensemble models comparing 7 algorithms on 2,200+ data points across 22 crops.", color: "text-primary", bg: "bg-primary/10", border: "border-primary/20" },
@@ -80,7 +77,6 @@ export default function About() {
             ))}
           </div>
 
-          {/* The Research */}
           <div className="rounded-3xl border border-border/40 bg-gradient-card card-shadow p-8 md:p-12 mb-20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
               <div>
@@ -124,7 +120,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Tech Stack */}
           <div className="mb-20">
             <div className="text-center mb-10">
               <span className="text-primary text-sm font-medium uppercase tracking-widest">Under the Hood</span>
@@ -132,18 +127,17 @@ export default function About() {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {techStack.map((t) => (
-                <div key={t.name} className={`rounded-xl bg-gradient-card border ${t.border} p-4 hover:${t.bg} transition-all duration-300 group`}>
+                <div key={t.name} className={`rounded-xl bg-gradient-card border ${t.border} p-4 transition-all duration-300 group`}>
                   <div className={`w-8 h-8 rounded-lg ${t.bg} border ${t.border} mb-3 flex items-center justify-center`}>
                     <Brain className={`w-4 h-4 ${t.color}`} />
                   </div>
-                  <h4 className={`font-display font-semibold text-sm mb-1 group-hover:${t.color} transition-colors`}>{t.name}</h4>
+                  <h4 className={`font-display font-semibold text-sm mb-1 ${t.color}`}>{t.name}</h4>
                   <p className="text-xs text-muted-foreground">{t.desc}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Timeline */}
           <div className="mb-20">
             <div className="text-center mb-10">
               <span className="text-primary text-sm font-medium uppercase tracking-widest">Journey</span>
@@ -167,7 +161,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Team */}
           <div className="mb-16">
             <div className="text-center mb-10">
               <span className="text-primary text-sm font-medium uppercase tracking-widest">The People</span>
@@ -193,7 +186,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* CTA */}
           <div className="text-center rounded-3xl border border-primary/20 p-10 bg-gradient-card">
             <h2 className="font-display text-3xl font-bold mb-3">Ready to experience it?</h2>
             <p className="text-muted-foreground mb-6 max-w-md mx-auto">Try our AI crop recommender and see SHAP-powered explanations in action.</p>

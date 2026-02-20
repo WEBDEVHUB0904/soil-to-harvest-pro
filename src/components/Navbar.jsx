@@ -31,7 +31,6 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between">
-        {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group">
           <div className="p-2 rounded-xl bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-all duration-300">
             <Sprout className="w-5 h-5 text-primary" />
@@ -42,7 +41,6 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
             <Link
@@ -59,7 +57,6 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Auth buttons */}
         <div className="hidden md:flex items-center gap-3">
           <Link to="/auth">
             <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
@@ -73,7 +70,6 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile toggle */}
         <button
           className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -82,7 +78,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden glass border-t border-border/50 mt-2 mx-4 rounded-2xl p-4 flex flex-col gap-2">
           {navItems.map((item) => (

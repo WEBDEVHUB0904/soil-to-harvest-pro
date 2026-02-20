@@ -130,7 +130,7 @@ const schemes = [
   },
 ];
 
-const statusColors: Record<string, string> = {
+const statusColors = {
   Ongoing: "bg-primary/15 text-primary border-primary/30",
   Upcoming: "bg-gold/15 text-gold border-gold/30",
 };
@@ -157,7 +157,6 @@ export default function Schemes() {
       <Navbar />
       <div className="pt-28 pb-16">
         <div className="container mx-auto">
-          {/* Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
               <Landmark className="w-4 h-4 text-primary" />
@@ -171,7 +170,6 @@ export default function Schemes() {
             </p>
           </div>
 
-          {/* Summary cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
             {[
               { label: "Total Schemes", value: schemes.length, icon: "📋" },
@@ -187,7 +185,6 @@ export default function Schemes() {
             ))}
           </div>
 
-          {/* Search & Filter */}
           <div className="flex flex-col md:flex-row gap-4 mb-8">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -213,7 +210,6 @@ export default function Schemes() {
             </div>
           </div>
 
-          {/* Schemes Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {filtered.map((scheme) => (
               <div key={scheme.id} className="group rounded-2xl bg-gradient-card border border-border/40 hover:border-primary/30 p-6 card-shadow hover:-translate-y-0.5 transition-all duration-300 flex flex-col">
@@ -226,7 +222,9 @@ export default function Schemes() {
                     </div>
                   </div>
                   <span className={`flex-shrink-0 text-xs px-2.5 py-1 rounded-full border font-medium ${statusColors[scheme.status]}`}>
-                    {scheme.status === "Ongoing" ? <span className="flex items-center gap-1"><CheckCircle className="w-3 h-3 inline" />{scheme.status}</span> : <span className="flex items-center gap-1"><AlertCircle className="w-3 h-3 inline" />{scheme.status}</span>}
+                    {scheme.status === "Ongoing"
+                      ? <span className="flex items-center gap-1"><CheckCircle className="w-3 h-3 inline" />{scheme.status}</span>
+                      : <span className="flex items-center gap-1"><AlertCircle className="w-3 h-3 inline" />{scheme.status}</span>}
                   </span>
                 </div>
 

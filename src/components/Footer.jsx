@@ -6,7 +6,6 @@ export default function Footer() {
     <footer className="border-t border-border/50 bg-card/50">
       <div className="container mx-auto py-12 px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 mb-4">
               <div className="p-2 rounded-xl bg-primary/10 border border-primary/20">
@@ -26,7 +25,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links */}
           <div>
             <h4 className="font-display font-semibold text-sm mb-4 text-foreground">Platform</h4>
             <div className="flex flex-col gap-2.5">

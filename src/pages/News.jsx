@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Calendar, Tag, ExternalLink, TrendingUp, Rss } from "lucide-react";
+import { Search, Calendar, ExternalLink, TrendingUp, Rss } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -90,7 +90,7 @@ const news = [
   },
 ];
 
-const tagColors: Record<string, string> = {
+const tagColors = {
   trending: "bg-primary/15 text-primary border-primary/30",
   new: "bg-lime/15 text-lime border-lime/30",
   hot: "bg-gold/15 text-gold border-gold/30",
@@ -112,7 +112,6 @@ export default function News() {
       <Navbar />
       <div className="pt-28 pb-16">
         <div className="container mx-auto">
-          {/* Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
               <Rss className="w-4 h-4 text-primary" />
@@ -126,7 +125,6 @@ export default function News() {
             </p>
           </div>
 
-          {/* Search & Filter */}
           <div className="flex flex-col md:flex-row gap-4 mb-8">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -152,7 +150,6 @@ export default function News() {
             </div>
           </div>
 
-          {/* Featured Article (first) */}
           {filtered.length > 0 && activeCategory === "All" && !search && (
             <div className="relative rounded-2xl overflow-hidden border border-primary/20 bg-gradient-card card-shadow mb-8 group">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent pointer-events-none" />
@@ -181,7 +178,6 @@ export default function News() {
             </div>
           )}
 
-          {/* News Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {(activeCategory === "All" && !search ? filtered.slice(1) : filtered).map((article) => (
               <div key={article.id} className="group rounded-2xl bg-gradient-card border border-border/40 hover:border-primary/30 p-6 card-shadow hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col">

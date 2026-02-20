@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Sprout, Thermometer, Droplets, CloudRain, Beaker, ChevronRight, Info, Leaf, TrendingUp, AlertCircle, CheckCircle } from "lucide-react";
+import { Sprout, Thermometer, Droplets, CloudRain, Beaker, Info, Leaf, TrendingUp, AlertCircle, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import Navbar from "@/components/Navbar";
@@ -29,7 +28,7 @@ const defaultValues = { N: 90, P: 42, K: 43, pH: 6.5, temperature: 25, humidity:
 
 export default function Recommend() {
   const [values, setValues] = useState(defaultValues);
-  const [result, setResult] = useState<null | typeof CROPS>(null);
+  const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleAnalyze = () => {
@@ -37,7 +36,7 @@ export default function Recommend() {
     setTimeout(() => { setResult(CROPS); setLoading(false); }, 2000);
   };
 
-  const setValue = (key: keyof typeof defaultValues, val: number) =>
+  const setValue = (key, val) =>
     setValues((v) => ({ ...v, [key]: val }));
 
   return (
@@ -45,7 +44,6 @@ export default function Recommend() {
       <Navbar />
       <div className="pt-28 pb-16">
         <div className="container mx-auto">
-          {/* Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
               <Sprout className="w-4 h-4 text-primary" />
@@ -75,12 +73,12 @@ export default function Recommend() {
                   <div key={param.key} className="mb-5">
                     <div className="flex justify-between items-center mb-2">
                       <Label className="text-sm font-medium">{param.label}</Label>
-                      <span className="text-sm font-semibold text-primary">{values[param.key as keyof typeof values]} <span className="text-xs text-muted-foreground">{param.unit}</span></span>
+                      <span className="text-sm font-semibold text-primary">{values[param.key]} <span className="text-xs text-muted-foreground">{param.unit}</span></span>
                     </div>
                     <Slider
                       min={param.min} max={param.max} step={1}
-                      value={[values[param.key as keyof typeof values] as number]}
-                      onValueChange={([v]) => setValue(param.key as keyof typeof defaultValues, v)}
+                      value={[values[param.key]]}
+                      onValueChange={([v]) => setValue(param.key, v)}
                       className="w-full"
                     />
                   </div>
@@ -113,12 +111,12 @@ export default function Recommend() {
                       <Label className="text-sm font-medium flex items-center gap-1.5">
                         <param.icon className={`w-3.5 h-3.5 ${param.color}`} />{param.label}
                       </Label>
-                      <span className={`text-sm font-semibold ${param.color}`}>{values[param.key as keyof typeof values]} <span className="text-xs text-muted-foreground">{param.unit}</span></span>
+                      <span className={`text-sm font-semibold ${param.color}`}>{values[param.key]} <span className="text-xs text-muted-foreground">{param.unit}</span></span>
                     </div>
                     <Slider
                       min={param.min} max={param.max} step={param.key === "rainfall" ? 5 : 1}
-                      value={[values[param.key as keyof typeof values] as number]}
-                      onValueChange={([v]) => setValue(param.key as keyof typeof defaultValues, v)}
+                      value={[values[param.key]]}
+                      onValueChange={([v]) => setValue(param.key, v)}
                     />
                   </div>
                 ))}
@@ -152,7 +150,6 @@ export default function Recommend() {
                 </div>
               ) : (
                 <>
-                  {/* Top Recommendations */}
                   <div className="rounded-2xl bg-gradient-card border border-border/60 p-6 card-shadow">
                     <h3 className="font-display font-semibold text-lg mb-5 flex items-center gap-2">
                       <TrendingUp className="w-4 h-4 text-primary" /> Crop Recommendations
@@ -189,7 +186,6 @@ export default function Recommend() {
                     </div>
                   </div>
 
-                  {/* SHAP Explanation */}
                   <div className="rounded-2xl bg-gradient-card border border-border/60 p-6 card-shadow">
                     <h3 className="font-display font-semibold text-lg mb-1 flex items-center gap-2">
                       <Info className="w-4 h-4 text-gold" /> SHAP Feature Importance
@@ -211,7 +207,7 @@ export default function Recommend() {
                       ))}
                     </div>
                     <p className="text-xs text-muted-foreground mt-4 p-3 bg-secondary/50 rounded-xl">
-                      <strong className="text-foreground">Interpretation:</strong> Positive SHAP values (green) push toward Rice recommendation, negative values (red) push against it. Humidity and rainfall are the dominant positive factors.
+                      <strong className="text-foreground">Interpretation:</strong> Positive SHAP values (green) push toward Rice recommendation, negative values (red) push against it.
                     </p>
                   </div>
                 </>

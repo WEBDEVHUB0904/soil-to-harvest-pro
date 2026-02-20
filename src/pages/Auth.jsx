@@ -16,14 +16,14 @@ const benefits = [
 
 export default function Auth() {
   const [searchParams] = useSearchParams();
-  const [tab, setTab] = useState<"login" | "register">(
+  const [tab, setTab] = useState(
     searchParams.get("tab") === "register" ? "register" : "login"
   );
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", password: "", confirmPassword: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     setTimeout(() => setLoading(false), 2000);
@@ -31,12 +31,10 @@ export default function Auth() {
 
   return (
     <div className="min-h-screen bg-background flex">
-      {/* Left panel — visual */}
+      {/* Left panel */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden flex-col justify-between p-12">
         <img src={heroFarm} alt="Farm" className="absolute inset-0 w-full h-full object-cover opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background/80 to-background/60" />
-
-        {/* Glow */}
         <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
 
         <Link to="/" className="relative flex items-center gap-2.5">
@@ -78,10 +76,9 @@ export default function Auth() {
         <p className="relative text-xs text-muted-foreground">© 2025 CropSense AI · Precision Agriculture Platform</p>
       </div>
 
-      {/* Right panel — form */}
+      {/* Right panel */}
       <div className="flex-1 flex items-center justify-center p-6 lg:p-12">
         <div className="w-full max-w-md">
-          {/* Mobile logo */}
           <Link to="/" className="lg:hidden flex items-center gap-2 mb-8">
             <div className="p-1.5 rounded-lg bg-primary/10 border border-primary/20">
               <Sprout className="w-4 h-4 text-primary" />
@@ -89,9 +86,8 @@ export default function Auth() {
             <span className="font-display font-bold">CropSense AI</span>
           </Link>
 
-          {/* Tab switcher */}
           <div className="flex gap-1 p-1 bg-secondary rounded-xl mb-8">
-            {(["login", "register"] as const).map((t) => (
+            {["login", "register"].map((t) => (
               <button
                 key={t}
                 onClick={() => setTab(t)}
